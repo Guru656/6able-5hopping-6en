@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6able-end 5hopping-list 6enerator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 1.5rem;
+            margin: 10px 5px;
+            line-height: 1.3;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .category-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+        .category {
+            background-color: white;
+            border-radius: 8px;
+            padding: 12px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            flex: 1;
+            min-width: calc(100% - 10px);
+            margin: 0 5px;
+        }
+        .category h2 {
+            margin-top: 0;
+            color: #3498db;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 8px;
+            font-size: 1.3rem;
+        }
+        .item-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .item-btn {
+            padding: 8px 12px;
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+            color: #333;
+        }
+        .item-btn:hover {
+            background-color: #e0e0e0;
+        }
+        .item-btn.selected {
+            background-color: #3498db;
+            color: white;
+            border-color: #2980b9;
+        }
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 25px auto;
+            padding: 0 5px;
+        }
+        button {
+            padding: 12px 20px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            flex: 1;
+            min-width: 140px;
+        }
+        #copyButton {
+            background-color: #2ecc71;
+        }
+        #copyButton:hover {
+            background-color: #27ae60;
+        }
+        #whatsappButton {
+            background-color: #25D366;
+        }
+        #whatsappButton:hover {
+            background-color: #128C7E;
+        }
+        .notification {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #2ecc71;
+            color: white;
+            padding: 12px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            display: none;
+            font-size: 1.1rem;
+            max-width: 90%;
+            text-align: center;
+        }
+        .hidden-textarea {
+            position: absolute;
+            left: -9999px;
+        }
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+                white-space: normal;
+            }
+            .category {
+                min-width: calc(50% - 30px);
+            }
+            .item-btn {
+                font-size: 1rem;
+                padding: 8px 14px;
+            }
+        }
+        @media (min-width: 992px) {
+            body {
+                padding: 20px;
+            }
+            .category-container > div {
+                flex: 1;
+                min-width: calc(33.33% - 20px);
+            }
+            .category {
+                min-width: auto;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>6able-end 5hopping-list 6enerator</h1>
+    
+    <div class="category-container">
+        <div>
+            <div class="category">
+                <h2>Frequent Items</h2>
+                <div class="item-buttons">
+                    <button class="item-btn" data-name="Milk">Milk</button>
+                    <button class="item-btn" data-name="Eggs">Eggs</button>
+                    <button class="item-btn" data-name="Croissants">Croissants</button>
+                    <button class="item-btn" data-name="Sourdough">Sourdough</button>
+                    <button class="item-btn" data-name="Bread">Bread</button>
+                    <button class="item-btn" data-name="Salad">Salad</button>
+                    <button class="item-btn" data-name="Cream">Cream</button>
+                    <button class="item-btn" data-name="Yogurt">Yogurt</button>
+                    <button class="item-btn" data-name="Tomatoes">Tomatoes</button>
+                    <button class="item-btn" data-name="Cherry toms">Cherry toms</button>
+                    <button class="item-btn" data-name="Cucumber">Cucumber</button>
+                    <button class="item-btn" data-name="Apples">Apples</button>
+                    <button class="item-btn" data-name="Avocados">Avocados</button>
+                    <button class="item-btn" data-name="Bananas">Bananas</button>
+                    <button class="item-btn" data-name="Grapes">Grapes</button>
+                    <button class="item-btn" data-name="Lemons">Lemons</button>
+                    <button class="item-btn" data-name="Oranges">Oranges</button>
+                    <button class="item-btn" data-name="Chicken">Chicken</button>
+                    <button class="item-btn" data-name="Salmon">Salmon</button>
+                    <button class="item-btn" data-name="Tomato cans">Tomato cans</button>
+                    <button class="item-btn" data-name="Garlic">Garlic</button>
+                    <button class="item-btn" data-name="Ginger">Ginger</button>
+                    <button class="item-btn" data-name="White onions">White onions</button>
+                    <button class="item-btn" data-name="Red onions">Red onions</button>
+                    <button class="item-btn" data-name="Green chilli">Green chilli</button>
+                    <button class="item-btn" data-name="Toothpaste">Toothpaste</button>
+                    <button class="item-btn" data-name="Shower gel">Shower gel</button>
+                    <button class="item-btn" data-name="Coffee">Coffee</button>
+                    <button class="item-btn" data-name="Tea">Tea</button>
+                    <button class="item-btn" data-name="Lemon tea">Lemon tea</button>
+                    <button class="item-btn" data-name="Chocolates">Chocolates</button>
+                    <button class="item-btn" data-name="Almonds">Almonds</button>
+                    <button class="item-btn" data-name="Lentil crisps">Lentil crisps</button>
+                </div>
+            </div>
+        </div>
+        
+        <div>
+            <div class="category">
+                <h2>Additional Items</h2>
+                <div class="item-buttons">
+                    <button class="item-btn" data-name="Carrots">Carrots</button>
+                    <button class="item-btn" data-name="Cauliflower">Cauliflower</button>
+                    <button class="item-btn" data-name="Mushrooms">Mushrooms</button>
+                    <button class="item-btn" data-name="Peppers">Peppers</button>
+                    <button class="item-btn" data-name="Potatoes">Potatoes</button>
+                    <button class="item-btn" data-name="Spinach">Spinach</button>
+                    <button class="item-btn" data-name="Melon">Melon</button>
+                    <button class="item-btn" data-name="Ham">Ham</button>
+                    <button class="item-btn" data-name="Tuna">Tuna</button>
+                    <button class="item-btn" data-name="Tortillas">Tortillas</button>
+                    <button class="item-btn" data-name="Cookies">Cookies</button>
+                    <button class="item-btn" data-name="Oatmeal">Oatmeal</button>
+                    <button class="item-btn" data-name="Honey">Honey</button>
+                    <button class="item-btn" data-name="Cereal">Cereal</button>
+                    <button class="item-btn" data-name="Olive oil">Olive oil</button>
+                    <button class="item-btn" data-name="Pasta">Pasta</button>
+                    <button class="item-btn" data-name="Veg oil">Veg oil</button>
+                    <button class="item-btn" data-name="Vinegar">Vinegar</button>
+                    <button class="item-btn" data-name="Tofu">Tofu</button>
+                    <button class="item-btn" data-name="Sugar">Sugar</button>
+                    <button class="item-btn" data-name="Pepper">Pepper</button>
+                    <button class="item-btn" data-name="Salt">Salt</button>
+                    <button class="item-btn" data-name="Bleach">Bleach</button>
+                    <button class="item-btn" data-name="Detergent">Detergent</button>
+                    <button class="item-btn" data-name="Dishwasher tabs">Dishwasher tabs</button>
+                    <button class="item-btn" data-name="Glass cleaner">Glass cleaner</button>
+                    <button class="item-btn" data-name="Foil">Foil</button>
+                    <button class="item-btn" data-name="Paper towels">Paper towels</button>
+                    <button class="item-btn" data-name="Clingfilm">Clingfilm</button>
+                    <button class="item-btn" data-name="Freezer bags">Freezer bags</button>
+                    <button class="item-btn" data-name="Shampoo">Shampoo</button>
+                    <button class="item-btn" data-name="Blueberries">Blueberries</button>
+                    <button class="item-btn" data-name="Mayo">Mayo</button>
+                    <button class="item-btn" data-name="Soy sauce">Soy sauce</button>
+                </div>
+            </div>
+        </div>
+        
+        <div>
+            <div class="category">
+                <h2>Desi Items</h2>
+                <div class="item-buttons">
+                    <button class="item-btn" data-name="Paneer">Paneer</button>
+                    <button class="item-btn" data-name="Rice">Rice</button>
+                    <button class="item-btn" data-name="Atta">Atta</button>
+                    <button class="item-btn" data-name="Naan">Naan</button>
+                    <button class="item-btn" data-name="Namkeen">Namkeen</button>
+                    <button class="item-btn" data-name="Spicy nuts">Spicy nuts</button>
+                    <button class="item-btn" data-name="Boondi">Boondi</button>
+                    <button class="item-btn" data-name="Daal">Daal</button>
+                    <button class="item-btn" data-name="Garlic paste">Garlic paste</button>
+                    <button class="item-btn" data-name="Ginger paste">Ginger paste</button>
+                    <button class="item-btn" data-name="Onions">Onions</button>
+                    <button class="item-btn" data-name="Hot sauce">Hot sauce</button>
+                    <button class="item-btn" data-name="Kebab">Kebab</button>
+                    <button class="item-btn" data-name="Masala">Masala</button>
+                    <button class="item-btn" data-name="Dhania">Dhania</button>
+                    <button class="item-btn" data-name="Mint">Mint</button>
+                    <button class="item-btn" data-name="Papri chaat">Papri chaat</button>
+                    <button class="item-btn" data-name="Ghee">Ghee</button>
+                </div>
+            </div>
+            
+            <div class="category">
+                <h2>Party List</h2>
+                <div class="item-buttons">
+                    <button class="item-btn" data-name="Ice">Ice</button>
+                    <button class="item-btn" data-name="Beer">Beer</button>
+                    <button class="item-btn" data-name="Daru">Daru</button>
+                    <button class="item-btn" data-name="Coke zero">Coke zero</button>
+                    <button class="item-btn" data-name="Tonic water">Tonic water</button>
+                    <button class="item-btn" data-name="Lime">Lime</button>
+                    <button class="item-btn" data-name="Soda water">Soda water</button>
+                    <button class="item-btn" data-name="Dessert">Dessert</button>
+                    <button class="item-btn" data-name="Juice">Juice</button>
+                    <button class="item-btn" data-name="Napkins">Napkins</button>
+                    <button class="item-btn" data-name="Samosa">Samosa</button>
+                    <button class="item-btn" data-name="Peanuts">Peanuts</button>
+                    <button class="item-btn" data-name="Pistachios">Pistachios</button>
+                    <button class="item-btn" data-name="Hummus">Hummus</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="button-group">
+        <button id="copyButton">Copy Selected Items</button>
+        <button id="whatsappButton">Send via WhatsApp</button>
+    </div>
+    
+    <div class="notification" id="notification">Shopping list copied to clipboard!</div>
+    <textarea id="hiddenTextarea" class="hidden-textarea"></textarea>
+    
+    <script>
+        // Initialize item buttons
+        document.querySelectorAll('.item-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                this.classList.toggle('selected');
+            });
+        });
+
+        function getShoppingList() {
+            const selectedItems = Array.from(document.querySelectorAll('.item-btn.selected'))
+                .map(button => button.dataset.name);
+            return "Here's your shopping list:\n" + selectedItems.join('\n');
+        }
+
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.style.display = 'block';
+            setTimeout(function() {
+                notification.style.display = 'none';
+            }, 2000);
+        }
+
+        document.getElementById('copyButton').addEventListener('click', function() {
+            const shoppingList = getShoppingList();
+            const textarea = document.getElementById('hiddenTextarea');
+            
+            textarea.value = shoppingList;
+            textarea.select();
+            
+            try {
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    showNotification('Shopping list copied to clipboard!');
+                } else {
+                    showNotification('Failed to copy. Please try again.');
+                }
+            } catch (err) {
+                showNotification('Error copying text. Please select and copy manually.');
+            }
+            
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(shoppingList).catch(function() {});
+            }
+        });
+
+        document.getElementById('whatsappButton').addEventListener('click', function() {
+            const shoppingList = getShoppingList();
+            const text = encodeURIComponent(shoppingList);
+            window.open(`https://wa.me/?text=${text}`, '_blank');
+        });
+    </script>
+</body>
+</html>
