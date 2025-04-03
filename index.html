@@ -135,13 +135,39 @@
             body {
                 padding: 20px;
             }
-            .category-container > div {
-                flex: 1;
-                min-width: calc(33.33% - 20px);
+            .category-container {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-gap: 15px;
             }
             .category {
                 min-width: auto;
                 margin: 0;
+            }
+            /* Left column */
+            .category-container > div:nth-child(1) {
+                grid-column: 1;
+                grid-row: 1 / span 2;
+            }
+            /* Middle column */
+            .category-container > div:nth-child(2) {
+                grid-column: 2;
+                grid-row: 1;
+            }
+            /* Right column */
+            .category-container > div:nth-child(3) {
+                grid-column: 3;
+                grid-row: 1;
+            }
+            /* Bottom left (Desi store) */
+            .category-container > div:nth-child(4) {
+                grid-column: 1;
+                grid-row: 3;
+            }
+            /* Bottom middle (Party time) */
+            .category-container > div:nth-child(5) {
+                grid-column: 2;
+                grid-row: 3;
             }
         }
     </style>
@@ -150,6 +176,7 @@
     <h1>6able 5hopping 6en</h1>
     
     <div class="category-container">
+        <!-- Left Column -->
         <div>
             <div class="category">
                 <h2>List 1</h2>
@@ -175,13 +202,18 @@
                     <button class="item-btn" data-name="Oranges">Oranges</button>
                     <button class="item-btn" data-name="Chicken">Chicken</button>
                     <button class="item-btn" data-name="Chocolates">Chocolates</button>
-                    <button class="item-btn" data-name="Almonds">Almonds</button>
                     <button class="item-btn" data-name="Tomato cans">Tomato cans</button>
                     <button class="item-btn" data-name="Green chilli">Green chilli</button>
+                    <button class="item-btn" data-name="Blueberries">Blueberries</button>
+                    <button class="item-btn" data-name="Garlic">Garlic</button>
+                    <button class="item-btn" data-name="Ginger">Ginger</button>
+                    <button class="item-btn" data-name="White onions">White onions</button>
+                    <button class="item-btn" data-name="Red onions">Red onions</button>
                 </div>
             </div>
         </div>
         
+        <!-- Middle Column -->
         <div>
             <div class="category">
                 <h2>List 3</h2>
@@ -202,17 +234,13 @@
                     <button class="item-btn" data-name="Glass cleaner">Glass cleaner</button>
                     <button class="item-btn" data-name="Fairy liq">Fairy liq</button>
                     <button class="item-btn" data-name="Foil">Foil</button>
-                    <button class="item-btn" data-name="Paper towels">Paper towels</button>
                     <button class="item-btn" data-name="Clingfilm">Clingfilm</button>
-                    <button class="item-btn" data-name="Blueberries">Blueberries</button>
-                    <button class="item-btn" data-name="Garlic">Garlic</button>
-                    <button class="item-btn" data-name="Ginger">Ginger</button>
-                    <button class="item-btn" data-name="White onions">White onions</button>
-                    <button class="item-btn" data-name="Red onions">Red onions</button>
+                    <button class="item-btn" data-name="Almonds">Almonds</button>
                 </div>
             </div>
         </div>
         
+        <!-- Right Column -->
         <div>
             <div class="category">
                 <h2>List 4</h2>
@@ -240,9 +268,13 @@
                     <button class="item-btn" data-name="Shampoo">Shampoo</button>
                     <button class="item-btn" data-name="Mayo">Mayo</button>
                     <button class="item-btn" data-name="Soy sauce">Soy sauce</button>
+                    <button class="item-btn" data-name="Paper towels">Paper towels</button>
                 </div>
             </div>
-            
+        </div>
+        
+        <!-- Bottom Left (Desi store) -->
+        <div>
             <div class="category">
                 <h2>Desi store</h2>
                 <div class="item-buttons">
@@ -267,7 +299,10 @@
                     <button class="item-btn" data-name="Sawg">Sawg</button>
                 </div>
             </div>
-            
+        </div>
+        
+        <!-- Bottom Middle (Party time) -->
+        <div>
             <div class="category">
                 <h2>Party time</h2>
                 <div class="item-buttons">
