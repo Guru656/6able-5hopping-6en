@@ -50,15 +50,18 @@
             gap: 8px;
         }
         .item-btn {
-            padding: 8px 12px;
+            padding: 10px 14px;
             background-color: #f0f0f0;
             border: 1px solid #ddd;
             border-radius: 20px;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            font-weight: bold;
             cursor: pointer;
             transition: all 0.3s;
             white-space: nowrap;
             color: #333;
+            min-width: 80px;
+            text-align: center;
         }
         .item-btn:hover {
             background-color: #e0e0e0;
@@ -73,7 +76,7 @@
             justify-content: center;
             gap: 15px;
             flex-wrap: wrap;
-            margin: 25px auto;
+            margin: 15px auto;
             padding: 0 5px;
         }
         button {
@@ -87,16 +90,16 @@
             flex: 1;
             min-width: 140px;
         }
-        #copyButton {
+        #copyButton, #copyButtonTop {
             background-color: #2ecc71;
         }
-        #copyButton:hover {
+        #copyButton:hover, #copyButtonTop:hover {
             background-color: #27ae60;
         }
-        #whatsappButton {
+        #whatsappButton, #whatsappButtonTop {
             background-color: #25D366;
         }
-        #whatsappButton:hover {
+        #whatsappButton:hover, #whatsappButtonTop:hover {
             background-color: #128C7E;
         }
         .notification {
@@ -118,6 +121,27 @@
             position: absolute;
             left: -9999px;
         }
+        .additional-items {
+            margin: 20px auto;
+            max-width: 600px;
+            padding: 0 10px;
+        }
+        .additional-items h3 {
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+        .additional-items textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            min-height: 80px;
+            font-family: Arial, sans-serif;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
         @media (min-width: 768px) {
             h1 {
                 font-size: 1.8rem;
@@ -125,10 +149,6 @@
             }
             .category {
                 min-width: calc(50% - 30px);
-            }
-            .item-btn {
-                font-size: 1rem;
-                padding: 8px 14px;
             }
         }
         @media (min-width: 992px) {
@@ -170,10 +190,26 @@
                 grid-row: 3;
             }
         }
+        @media (max-width: 480px) {
+            .item-btn {
+                padding: 12px 16px;
+                font-size: 1.05rem;
+                min-width: 0;
+                flex-grow: 1;
+            }
+            .item-buttons {
+                gap: 6px;
+            }
+        }
     </style>
 </head>
 <body>
     <h1>6able 5hopping 6en</h1>
+    
+    <div class="button-group">
+        <button id="copyButtonTop">Copy Selected Items</button>
+        <button id="whatsappButtonTop">Send via WhatsApp</button>
+    </div>
     
     <div class="category-container">
         <!-- Left Column -->
@@ -205,10 +241,9 @@
                     <button class="item-btn" data-name="Tomato cans">Tomato cans</button>
                     <button class="item-btn" data-name="Green chilli">Green chilli</button>
                     <button class="item-btn" data-name="Blueberries">Blueberries</button>
-                    <button class="item-btn" data-name="Garlic">Garlic</button>
-                    <button class="item-btn" data-name="Ginger">Ginger</button>
                     <button class="item-btn" data-name="White onions">White onions</button>
                     <button class="item-btn" data-name="Red onions">Red onions</button>
+                    <button class="item-btn" data-name="Cucumber">Cucumber</button>
                 </div>
             </div>
         </div>
@@ -222,8 +257,9 @@
                     <button class="item-btn" data-name="Tea">Tea</button>
                     <button class="item-btn" data-name="Lemon tea">Lemon tea</button>
                     <button class="item-btn" data-name="Almonds">Almonds</button>
-                    <button class="item-btn" data-name="Cucumber">Cucumber</button>
                     <button class="item-btn" data-name="Avocados">Avocados</button>
+                    <button class="item-btn" data-name="Mushrooms">Mushrooms</button>
+                    <button class="item-btn" data-name="Vegetables">Vegetables</button>
                     <button class="item-btn" data-name="Salmon">Salmon</button>
                     <button class="item-btn" data-name="Honey">Honey</button>
                     <button class="item-btn" data-name="Olive oil">Olive oil</button>
@@ -235,6 +271,8 @@
                     <button class="item-btn" data-name="Fairy liq">Fairy liq</button>
                     <button class="item-btn" data-name="Foil">Foil</button>
                     <button class="item-btn" data-name="Clingfilm">Clingfilm</button>
+                    <button class="item-btn" data-name="Garlic">Garlic</button>
+                    <button class="item-btn" data-name="Ginger">Ginger</button>
                 </div>
             </div>
         </div>
@@ -244,20 +282,12 @@
             <div class="category">
                 <h2>List 4</h2>
                 <div class="item-buttons">
-                    <button class="item-btn" data-name="Mushrooms">Mushrooms</button>
-                    <button class="item-btn" data-name="Carrots">Carrots</button>
-                    <button class="item-btn" data-name="Cauliflower">Cauliflower</button>
-                    <button class="item-btn" data-name="Peppers">Peppers</button>
-                    <button class="item-btn" data-name="Potatoes">Potatoes</button>
-                    <button class="item-btn" data-name="Ham">Ham</button>
-                    <button class="item-btn" data-name="Lentil crisps">Lentil crisps</button>
-                    <button class="item-btn" data-name="Melon">Melon</button>
-                    <button class="item-btn" data-name="Tuna">Tuna</button>
-                    <button class="item-btn" data-name="Tortillas">Tortillas</button>
-                    <button class="item-btn" data-name="Tofu">Tofu</button>
                     <button class="item-btn" data-name="Coconut Milk">Coconut Milk</button>
-                    <button class="item-btn" data-name="Toothpaste">Toothpaste</button>
-                    <button class="item-btn" data-name="Shower gel">Shower gel</button>
+                    <button class="item-btn" data-name="Tofu">Tofu</button>
+                    <button class="item-btn" data-name="Lentil crisps">Lentil crisps</button>
+                    <button class="item-btn" data-name="Tortillas">Tortillas</button>
+                    <button class="item-btn" data-name="Sandwich">Sandwich</button>
+                    <button class="item-btn" data-name="Tuna">Tuna</button>
                     <button class="item-btn" data-name="Cookies">Cookies</button>
                     <button class="item-btn" data-name="Oatmeal">Oatmeal</button>
                     <button class="item-btn" data-name="Cereal">Cereal</button>
@@ -269,6 +299,8 @@
                     <button class="item-btn" data-name="Freezer bags">Freezer bags</button>
                     <button class="item-btn" data-name="Shampoo">Shampoo</button>
                     <button class="item-btn" data-name="Paper towels">Paper towels</button>
+                    <button class="item-btn" data-name="Toothpaste">Toothpaste</button>
+                    <button class="item-btn" data-name="Shower gel">Shower gel</button>
                 </div>
             </div>
         </div>
@@ -320,9 +352,15 @@
                     <button class="item-btn" data-name="Peanuts">Peanuts</button>
                     <button class="item-btn" data-name="Pistachios">Pistachios</button>
                     <button class="item-btn" data-name="Hummus">Hummus</button>
+                    <button class="item-btn" data-name="Melon">Melon</button>
                 </div>
             </div>
         </div>
+    </div>
+    
+    <div class="additional-items">
+        <h3>Additional Items Not In Lists</h3>
+        <textarea id="additionalItems" placeholder="Enter additional items here (one per line)">add items not in list here</textarea>
     </div>
     
     <div class="button-group">
@@ -342,9 +380,19 @@
         });
 
         function getShoppingList() {
+            // Get selected items from buttons
             const selectedItems = Array.from(document.querySelectorAll('.item-btn.selected'))
                 .map(button => button.dataset.name);
-            return "Here's your shopping list:\n" + selectedItems.join('\n');
+            
+            // Get additional items from textarea
+            const additionalItemsText = document.getElementById('additionalItems').value;
+            const additionalItems = additionalItemsText.split('\n')
+                .map(item => item.trim())
+                .filter(item => item.length > 0 && item !== "add items not in list here");
+            
+            return "Here's your shopping list:\n" + 
+                   selectedItems.join('\n') + 
+                   (additionalItems.length > 0 ? '\n' + additionalItems.join('\n') : '');
         }
 
         function showNotification(message) {
@@ -356,7 +404,7 @@
             }, 2000);
         }
 
-        document.getElementById('copyButton').addEventListener('click', function() {
+        function copyToClipboard() {
             const shoppingList = getShoppingList();
             const textarea = document.getElementById('hiddenTextarea');
             
@@ -377,12 +425,25 @@
             if (navigator.clipboard) {
                 navigator.clipboard.writeText(shoppingList).catch(function() {});
             }
-        });
+        }
 
-        document.getElementById('whatsappButton').addEventListener('click', function() {
+        function sendToWhatsApp() {
             const shoppingList = getShoppingList();
             const text = encodeURIComponent(shoppingList);
             window.open(`https://wa.me/?text=${text}`, '_blank');
+        }
+
+        // Set up event listeners for both sets of buttons
+        document.getElementById('copyButton').addEventListener('click', copyToClipboard);
+        document.getElementById('whatsappButton').addEventListener('click', sendToWhatsApp);
+        document.getElementById('copyButtonTop').addEventListener('click', copyToClipboard);
+        document.getElementById('whatsappButtonTop').addEventListener('click', sendToWhatsApp);
+
+        // Clear default text when textarea is focused
+        document.getElementById('additionalItems').addEventListener('focus', function() {
+            if (this.value === "add items not in list here") {
+                this.value = '';
+            }
         });
     </script>
 </body>
